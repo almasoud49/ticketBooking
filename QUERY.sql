@@ -88,3 +88,8 @@ where full_name like 'Tanvir%' or full_name ilike '%Haque%';
 
 select  booking_id,user_id, match_id, COALESCE(payment_status, 'Action Required') AS systematic_status from bookings  
 where payment_status is null;
+
+--Query 4: Retrieve match booking details along with the User's full name and the scheduled Match fixture teams.
+select  booking_id, full_name, fixture,  total_cost from bookings
+inner join Users on bookings.user_id = users.user_id 
+inner join Matches on bookings.match_id = matches.match_id;
