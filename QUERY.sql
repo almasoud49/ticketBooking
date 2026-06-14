@@ -98,3 +98,8 @@ inner join Matches on bookings.match_id = matches.match_id;
 SELECT users.user_id, users.full_name, bookings.booking_id
 FROM users
 LEFT JOIN Bookings ON users.user_id = Bookings.user_id;
+
+--Query 6: Find all ticket bookings where the total cost is strictly higher than the average cost of all ticket bookings.
+select booking_id, match_id, total_cost from bookings
+where total_cost > (select avg(total_cost) from bookings);
+
